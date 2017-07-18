@@ -143,7 +143,7 @@ app.controller('account-messages', function($scope, $rootScope, $http, $state, $
 
 			var newNotif = document.getElementById('Header_UM_ID').innerHTML;
 			
-			if(newNotif == 0){
+			if(newNotif <= 0){
 				document.getElementById('Header_UM_ID').style.display = "none";
 			}
 

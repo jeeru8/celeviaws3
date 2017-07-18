@@ -219,7 +219,7 @@ module.exports.readByUser = function (request, response) {
 			return response.status(500).json({error: error, message: 'Something went wrong.'});
 		}
 
-		if (chats.length <= 0) {
+		if (chats.length == 0) {
 		
 			return response.status(500).json({message: 'No chat registered'});
 		}
