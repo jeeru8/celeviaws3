@@ -1,0 +1,73 @@
+<nav class="navbar navbar-default" style="margin-top: -20px;">
+		
+		<div class="container-fluid">
+			
+			<div class="navbar-header" style="margin-top: 7px;">
+
+				<div class="pull-left input-group col-xs-12">
+	      			
+	      			<input type="text" class="form-control" placeholder="Search user..." ng-model="search">
+					
+					<span class="input-group-btn">
+					
+						<button type="button" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+					
+					</span>
+    			
+    			</div>
+			
+			</div>
+
+		</div>
+
+	</nav>
+
+<div class="container-fluid">
+	
+	<div class="row" ng-repeat="user in users | filter: search">
+		
+		<div class="col-xs-12">
+
+			<div class="panel panel-default">
+				
+				<div class="panel-heading">
+
+					<img ng-src="images/{{user.image.filename || 'p1.jpg'}}" class="img-circle image-small"> {{ user.firstName }} {{ user.lastName }}
+
+					<div class="dropdown pull-right">
+						
+						<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+						
+							<i class="fa fa-ellipsis-v"></i>
+						
+						</button>
+
+						<ul class="dropdown-menu">
+							
+							<li><a href="" ng-click="delete(user._id)">Delete</a></li>
+							
+						</ul>
+
+					</div>
+
+				</div>
+
+				<ul class="list-group">
+					
+					<li class="list-group-item"><i class="fa fa-envelope fa-fw"></i> Email: {{ user.email }}</li>
+					
+					<li class="list-group-item"><i class="fa fa-phone fa-fw"></i> Contact Number: {{ user.contactNumber[0] }} {{ user.contactNumber[1] }}</li>
+					
+					<li class="list-group-item">Company Information: {{ user.company.name }} {{ user.company.unitNumber }} {{ user.company.zipcode }}</li>
+					
+					<li class="list-group-item">CEA Number:  {{ user.ceaNumber }}</li>
+				
+				</ul>
+			
+			</div>
+ 
+		</div>
+
+	</div>
+
+</div>

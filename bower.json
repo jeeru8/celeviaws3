@@ -1,0 +1,31 @@
+{
+  "name": "celevi",
+  "description": "",
+  "main": "server.js",
+  "authors": [
+    "celeviproject@gmail.com"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "dependencies": {
+    "angular": "^1.6.4",
+    "angular-ui-router": "^0.4.2",
+    "angular-socket-io": "^0.7.0",
+    "angular-auto-validate": "^1.19.6",
+    "bootstrap": "^3.3.7",
+    "ng-file-upload": "^12.2.13",
+    "components-font-awesome": "^4.7.0",
+    "toastr": "^2.1.3",
+    "bootstrap-multiselect": "^0.9.13",
+    "bootstrap-select": "^1.12.2",
+    "bootbox.js": "^4.4.0",
+    "checklist-model": "^0.11.0",
+    "angular-datetime": "^5.1.2",
+    "angular-bootstrap-select": "^0.0.5",
+    "angular-slick-carousel": "^3.1.7",
+    "lightbox2": "^2.9.0"
+  },
+  "install": {
+    "path": "client/assets/libs"
+  }
+}

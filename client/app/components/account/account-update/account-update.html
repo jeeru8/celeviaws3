@@ -1,0 +1,173 @@
+<div class="row">
+
+	<div class="col-xs-12">
+
+		<form name="updateForm" ng-submit="update()" novalidate>
+
+			<div class="panel panel-default">
+
+				<div class="panel-heading" style="display: -webkit-box; display: -webkit-flex; display: -moz-flex; display: flex; ;align-items: center;"> 
+
+					<p>My Account</p>
+
+					<div class="form-group" style="margin: 0; margin-left: auto;">
+						
+						<button type="submit" class="btn btn-primary" style="display: inline-block;">Save</button>
+						
+					</div>
+
+				</div>
+
+				<div class="panel-body">
+
+					<div class="form-group">
+						
+						<div class="checkbox" style="display: inline-block; padding-right: 20px;">
+								
+							<label>
+							
+								<input type="checkbox" ng-model="account.agent"> I'm a real state agent
+							
+							</label>
+
+						</div>
+
+					</div>
+
+					<div class="row">
+
+						<div class="form-group col-xs-12 col-md-4">
+
+							<div class="input-group">
+
+								<label>Email</label>
+			      			
+				      			<input type="email" class="form-control" placeholder="Email" ng-model="account.email" disabled required>
+								
+								<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+
+							</div>
+		    			
+		    			</div>	
+
+		    			<div class="form-group  col-xs-12 col-md-4">
+
+		    				<div class="input-group">
+
+		    					<label>First Name</label>
+							
+								<input type="text" class="form-control" placeholder="First Name" ng-model="account.firstName" ng-pattern="/^[a-zA-Z\s]*$/" ng-pattern-err-type="format" required>
+
+								<span class="input-group-addon"><i class="fa fa-user"></i></span>
+
+							</div>
+						
+						</div>
+
+		    			<div class="form-group  col-xs-12 col-md-4">
+
+		    				<label>Last Name</label>
+							
+							<input type="text" class="form-control" placeholder="Last Name" ng-model="account.lastName" ng-pattern="/^[a-zA-Z\s]*$/" ng-pattern-err-type="format" required>
+						
+						</div>
+
+						<div class="form-group  col-xs-12 col-md-4">
+
+							<div class="input-group">
+								
+		    					<label>Contact Number</label>
+
+								<input type="number" class="form-control" placeholder="Contact Number" ng-model="account.contactNumber[0]" ng-minlength="9" ng-maxlength="9">
+									
+								<span class="input-group-addon"><i class="fa fa-phone"></i></span>
+
+							</div>
+
+						</div>
+
+						<div class="form-group col-xs-12 col-md-4">
+
+							<div class="input-group">
+								
+		    					<label>Contact Number</label>
+
+								<input type="number" class="form-control" placeholder="Contact Number" ng-model="account.contactNumber[1]" ng-minlength="9" ng-maxlength="9">
+									
+								<span class="input-group-addon"><i class="fa fa-phone"></i></span>
+
+							</div>
+
+						</div>
+
+						<div class="form-group col-xs-12 col-md-4" ng-show="account.agent">
+
+							<div class="input-group">
+								
+		    					<label>CEA number</label>
+
+								<input type="text" class="form-control" placeholder="CEA Number" ng-pattern="/^[a-zA-Z0-9\s]*$/" ng-pattern-err-type="format" ng-model="account.ceaNumber">
+									
+								<span class="input-group-addon"><i class="fa fa-id-badge"></i></span>
+
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="row">
+
+						<div class="form-group col-xs-12 col-md-8">
+
+		    				<label>Company Name</label>
+
+							<input type="text" class="form-control" placeholder="Company Name" ng-pattern="/^[a-zA-Z0-9\s]*$/" ng-pattern-err-type="format" ng-model="account.company.name">
+						
+						</div>
+
+						<div class="form-group col-xs-12 col-md-4" ng-show="account.agent">
+
+		    				<label>License Number</label>
+
+							<input type="text" class="form-control" placeholder="Company Name" ng-pattern="/^[a-zA-Z0-9\s]*$/" ng-pattern-err-type="format" ng-model="account.licenseNumber">
+						
+						</div>
+
+					</div>
+
+					<div class="row">
+
+						<div class="form-group col-xs-12 col-md-4">
+
+							<div class="input-group">
+
+		    					<label>Company Unit Number</label>
+
+								<input type="number" class="form-control" placeholder="Company Unit Number" ng-model="account.company.unitNumber">
+
+								<span class="input-group-addon"><i class="fa fa-building"></i></span>
+
+							</div>
+						
+						</div>
+
+						<div class="form-group  col-xs-12 col-md-4">
+
+		    				<label>Company Zipcode</label>
+
+							<input type="number" class="form-control" placeholder="Company Zip code" ng-minlength="6" ng-maxlength="6" ng-model="account.company.zipcode">
+						
+						</div>
+
+					</div>
+
+				</div>
+			
+			</div>
+
+		</form>
+
+	</div>
+	
+</div>

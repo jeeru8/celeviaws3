@@ -1,0 +1,270 @@
+<nav class="navbar navbar-default navbar-fixed-top hidden-sm hidden-xs" style="margin-top: 51px; z-index: 999">
+	
+	<div class="container-fluid">
+		
+		<div class="navbar-header" style="width: 100%">
+			
+			<form class="row navbar-form navbar-left" ng-submit="readByCategory()" style="width: 100%">
+
+				<div class="form-group col-xs-12 col-md-2">
+				
+					<div class="pull-left input-group">
+		      			
+		      			<input type="text" class="form-control" placeholder="Search for..." ng-model="property.keywords">
+						
+						<span class="input-group-btn">
+						
+							<button type="button" ng-click="readByCategory()" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+						
+						</span>
+	    			
+	    			</div>	
+
+    			</div>
+
+    			<div class="form-group col-xs-12 col-md-2">
+					
+					<select class="form-control selectpicker grey" title="Sale or Lease" ng-model="property.category" ng-change="readByCategory()">
+
+						<option>For sale</option>
+
+						<option>For lease</option>
+				
+					</select>
+				
+				</div>
+
+    			<div class="form-group col-xs-12 col-md-2">
+
+					<select class="form-control selectpicker grey" title="Price" ng-model="property.price" ng-change="readByCategory()">
+
+					<!-- ng-options="price as price.label for price in select.prices track by price.value" -->
+						
+						<option disabled>Min - Max</option>
+
+						<option ng-repeat="price in select.prices" ng-value="{{price.value}}">{{price.label}}</option>
+						
+					</select>
+				
+				</div>
+
+				<div class="form-group col-xs-12 col-md-2">
+						
+					<select class="form-control grey" multiple multi-select title="Type" ng-model="property.types" ng-change="readByCategory()">
+					
+						<optgroup label="Office">
+					
+							<option>Private Office</option>
+					
+							<option>Shared Desk</option>
+					
+						</optgroup>
+					
+						<optgroup label="Retail">
+					
+							<option>Shophouse</option>
+					
+							<option>Push-cart</option>
+					
+							<option>Popup Space</option>
+					
+							<option>Hawker</option>
+					
+						</optgroup>
+					
+						<optgroup label="Industrial">
+					
+							<option>B1 Office</option>
+					
+							<option>B2 Industrial</option>
+					
+							<option>Industrial</option>
+					
+						</optgroup>
+					
+					</select>
+				
+				</div>
+
+			
+				<div class="form-group col-xs-12 col-md-2"">
+							
+					<select class="form-control selectpicker grey" title="Floor area" ng-model="property.area" ng-change="readByCategory()">
+						
+						<option disabled>Min-Max</option>
+
+						<option ng-repeat="area in select.floorAreas" ng-value="{{area.value}}">{{area.label}}</option>
+
+					</select>
+				
+				</div>
+
+				<div class="form-group col-xs-12 col-md-2"">
+							
+					<select class="form-control selectpicker grey" title="Location">
+						
+						<option>Any</option>
+				
+					</select>
+				
+				</div>
+			
+			</form>	
+		
+		</div>
+
+	</div>
+
+</nav>
+
+<div class="container-fluid hidden-padding">
+
+	<div class="row" >
+	
+		<div ng-repeat="property in properties" hidden="true" ng-init="pushToArrayMarker(property.coordinates)" on-finish-render="ngRepeatFinished">
+		</div>
+
+		<div class="col-xs-12 col-md-6 col-lg-6">
+			<!-- ng-mouseover="viewMarker(property.coordinates)"  -->
+			<div class="panel panel-default" ng-repeat="property in properties">
+				
+				<div class="panel-heading" style="display: flex; align-items: center" >
+
+					<a ui-sref="property ({id: property._id })" class="truncate" >
+						<emp><b>({{$index + 1}})</b></emp> {{ property.name }}
+					</a> 
+
+					<a href="" ui-sref="property ({id: property._id })" style="margin: 0 auto; margin-right: 0;"><i class="fa fa-comment fa-lg"></i></a>
+
+				</div>
+				<div class="panel-body" id="property-body">
+			
+					<div class="col-xs-12 col-md-4">
+
+						<a href="images/{{property.images[0].filename || 'u4644.png'}}" data-lightbox="image">
+
+							<img ng-src="images/{{property.images[0].filename || 'u4644.png'}}">
+
+						</a>
+
+					</div>
+ 					<div class="col-xs-12 col-md-8" >
+							
+						<div class="row">
+							
+							<div class="col-xs-12 col-md-12 col-lg-8">
+								
+								<p>Type of space: {{ property.types[0] || 'no registered' }}</p>
+
+								<p>Address: {{ property.address.street }}</p>
+
+								<p>Tenure: {{ property.tenure | date: "MM-dd-yyyy" }}</p>
+
+							</div>
+
+							<div class="col-xs-12 col-md-12 col-lg-4">
+							
+								<p>Price: $ {{ property.price }} <span ng-if="property.category == 'For lease'">/ month</span></p>
+
+								<p>Area: {{ property.area }} sqft</p>
+
+								<p>PSF: $ {{ property.price / property.area | number: 0 }} per sqft</p>
+								
+							</div>
+
+						</div>
+
+						<div class="row">
+
+							<img ng-src="images/{{property.owner.image.filename || 'p1.jpg'}}" class="img-circle image-small">
+								
+							<span>{{ property.owner.firstName }} {{ property.owner.lastName }}</span>
+
+							<span class="pull-right ultra-small" style="margin-top: 8px">{{ property.dateAvailable | date: "MM-dd-yyyy"  }}</span>
+
+						</div>
+
+					</div>
+			
+				</div>
+			
+			</div>
+
+			<!-- <nav aria-label="Page navigation" style="text-align: center">
+	
+				<ul class="pagination">
+				
+					<li>
+				
+						<a href="#" aria-label="Previous">
+				
+							<span aria-hidden="true">&laquo;</span>
+				
+						</a>
+				
+					</li>
+				
+					<li><a href="#">1</a></li>
+				
+					<li><a href="#">2</a></li>
+				
+					<li><a href="#">3</a></li>
+				
+					<li><a href="#">4</a></li>
+				
+					<li><a href="#">5</a></li>
+				
+					<li>
+						
+						<a href="#" aria-label="Next">
+						
+							<span aria-hidden="true">&raquo;</span>
+						
+						</a>
+					
+					</li>
+				
+				</ul>
+
+			</nav> -->
+
+		</div>
+
+		<div class="col-xs-12 col-md-6 col-lg-6 hidden-xs">
+			
+			<div class="panel panel-default" style="position: fixed; width: 630px;">
+				
+				<div class="panel-heading" style="display: flex; align-items: center">
+
+					<p>Map Listing</p>
+
+					<button class="btn btn-default" style="margin: 0 auto; margin-right: 0" ng-click="backSearch()"><i class="glyphicon glyphicon-share-alt"> Redo</i></button>
+
+				</div>
+				
+				<div class="panel-body">
+
+					<div id="map" style="width: 100%; height: 430px"></div>
+			
+				</div>
+			
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
+
+
+<script type="text/javascript">
+	
+	$(document).ready(function () {
+
+		$('.selectpicker').selectpicker();
+
+	})
+
+	
+
+</script>

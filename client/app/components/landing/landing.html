@@ -1,0 +1,137 @@
+<section>
+
+	<div class="container-fluid valign-wrapper" id="landing">
+		
+		<div class="row">
+
+			<div class="col-xs-12 col-md-6 col-md-offset-3">
+
+				<img src="images/Logo_Landing.png" id="landing-image">
+					
+				<form class="row">
+					
+					<div class="form-group btn-group col-xs-12">
+						
+						<label class="btn btn-default btn-shrink">
+						
+							<input type="radio" ng-model="property.category" autocomplete="off" value="For sale" style="display: none;"> For Sale
+						
+						</label>
+						
+						<label class="btn btn-default btn-shrink">
+					
+							<input type="radio" ng-model="property.category" autocomplete="off" value="For lease" style="display: none;"> For Lease
+					
+						</label>
+
+					</div>
+
+
+					<div class="form-group input-group col-xs-12">
+		      			
+		      			<input type="text" class="form-control" placeholder="Search for..." ng-model="property.keywords">
+						
+						<span class="input-group-btn">
+
+							<button type="button" class="btn btn-default" ui-sref="properties ({category: property })"><span class="glyphicon glyphicon-search"></span></button>
+						
+						</span>
+	    			
+	    			</div>	
+
+	    			<div class="form-group col-xs-12 col-md-3">
+						
+						<select class="form-control selectpicker grey" title="Price" ng-model="property.price">
+							
+							<option disabled>Min-Max</option>
+
+							<option ng-repeat="price in select.prices" ng-value="{{price.value}}">{{price.label}}</option>
+							
+						</select>
+					
+					</div>
+
+					<div class="form-group col-xs-12 col-md-3">
+								
+						<select class="form-control grey" multiple multi-select title="Type" ng-model="property.types">
+						
+							<optgroup label="Office">
+						
+								<option>Private Office</option>
+						
+								<option>Shared Desk</option>
+						
+							</optgroup>
+						
+							<optgroup label="Retail">
+						
+								<option>Shophouse</option>
+						
+								<option>Push-cart</option>
+						
+								<option>Popup Space</option>
+						
+								<option>Hawker</option>
+						
+							</optgroup>
+						
+							<optgroup label="Industrial">
+						
+								<option>B1 Office</option>
+						
+								<option>B2 Industrial</option>
+						
+								<option>Industrial</option>
+						
+							</optgroup>
+						
+						</select>
+					
+					</div>
+
+					<div class="form-group col-xs-12 col-md-3">
+								
+						<select class="form-control selectpicker grey" title="Floor area" ng-model="property.area">
+
+							<option disabled>Min-Max</option>
+
+							<option ng-repeat="area in select.floorAreas" ng-value="{{area.value}}">{{area.label}}</option>
+							
+						</select>
+					
+					</div>
+
+					<div class="form-group col-xs-12 col-md-3">
+								
+						<select class="form-control selectpicker grey" title="Location">
+							
+							<option>Any</option>
+					
+						</select>
+					
+					</div>
+
+				</form>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</section>
+
+<script type="text/javascript">
+	
+	$(document).ready(function () {
+
+		$('.selectpicker').selectpicker();
+
+		$('.btn-shrink input[type="radio"]').click(function () {
+			$('.btn-shrink input[type="radio"]').parent().removeClass('active');
+			$(this).parent().addClass('active')
+		});
+		
+	})
+
+</script>

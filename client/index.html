@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html ng-app="celevi">
+<head>
+	<meta charset="utf-8">
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	
+	<title>Celevi</title>
+
+	<!-- assets -->
+	
+	<!-- bootstrap -->
+	<link rel="stylesheet" type="text/css" href="assets/libs/bootstrap/bootstrap.css">
+	<!-- font awesome -->
+	<link rel="stylesheet" type="text/css" href="assets/libs/components-font-awesome/font-awesome.css">
+	<!-- bootstap select -->
+	<link rel="stylesheet" type="text/css" href="assets/libs/bootstrap-select/bootstrap-select.css">
+	<!-- bootstrap multiselect -->
+	<link rel="stylesheet" type="text/css" href="assets/libs/bootstrap-multiselect/bootstrap-multiselect.css">
+	<!-- slick carousel css -->
+	<link rel="stylesheet" type="text/css" href="assets/libs/slick-carousel/slick.css">
+	<!-- slick theme css -->
+	<link rel="stylesheet" type="text/css" href="assets/libs/slick-carousel/slick-theme.css"/>
+	<!-- lightbox -->
+	<link rel="stylesheet" type="text/css" href="assets/libs/lightbox2/lightbox.css">
+	<!-- toastr -->
+	<link rel="stylesheet" type="text/css" href="assets/libs/toastr/toastr.css">
+	<!-- style -->
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+</head>
+
+<body>
+
+	<!-- header -->
+	<header ng-include="'app/components/header/header.html'"></header>
+	<!-- content -->
+	<main ui-view></main>
+	<!-- footer -->
+	<footer ng-include="'app/components/footer/footer.html'"></footer>
+
+	<!-- google maps -->
+	<script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDY3Cn14xhj9LsYrUGzxNFWtQbuDD10hAY&libraries=places"></script>
+	<!-- socket io -->
+	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+
+	<!-- assets -->
+
+	<!-- jquery -->
+	<script type="text/javascript" src="assets/libs/jquery/jquery.js"></script>
+	<!-- bootstrap -->
+	<script type="text/javascript" src="assets/libs/bootstrap/bootstrap.js"></script>
+	<!-- bootstrap select -->
+	<script type="text/javascript" src="assets/libs/bootstrap-select/bootstrap-select.js"></script>
+	<!-- bootstrap multiselect -->
+	<script type="text/javascript" src="assets/libs/bootstrap-multiselect/bootstrap-multiselect.js"></script>
+	<!-- lightbox -->
+	<script type="text/javascript" src="assets/libs/lightbox2/lightbox.js"></script>
+	<!-- toastr -->
+	<script type="text/javascript" src="assets/libs/toastr/toastr.js"></script>
+	<!-- bootbox -->
+	<script type="text/javascript" src="assets/libs/bootbox.js/bootbox.js"></script>
+	<!-- slick carousel js -->
+	<script type="text/javascript" src="assets/libs/slick-carousel/slick.js"></script>
+	<!-- angular -->
+	<script type="text/javascript" src="assets/libs/angular/angular.js"></script>
+	<!-- ng file upload -->
+	<script type="text/javascript" src="assets/libs/ng-file-upload/ng-file-upload.js"></script>
+	<!-- angular slick carousel -->
+	<script type="text/javascript" src="assets/libs/angular-slick-carousel/angular-slick.js"></script>
+	<!-- angular ui router -->
+	<script type="text/javascript" src="assets/libs/angular-ui-router/angular-ui-router.js"></script>
+	<!-- angular auto validate -->
+	<script type="text/javascript" src="assets/libs/angular-auto-validate/jcs-auto-validate.js"></script>
+	<!-- angular socket io -->
+	<script type="text/javascript" src="assets/libs/angular-socket-io/socket.js"></script>
+	<!-- angular socket io -->
+	<script type="text/javascript" src="assets/libs/checklist-model/checklist-model.js"></script>
+
+	<!-- angular application -->
+
+	<!-- angular app -->
+	<script type="text/javascript" src="app/app.js"></script>
+	<!-- angular routes -->
+	<script type="text/javascript" src="app/routes.js"></script>	
+
+	<!-- angular services -->
+
+	<!-- angular chat service -->
+	<script type="text/javascript" src="app/services/chat.js"></script>
+	<!-- angular user service -->
+	<script type="text/javascript" src="app/services/user.js"></script>
+	<!-- angular chat service -->
+	<script type="text/javascript" src="app/services/property.js"></script>
+
+	<!-- angular directives -->
+
+	<!-- angular directives -->
+	<script type="text/javascript" src="app/directives/general.js"></script>
+
+	<!-- angular controllers -->
+
+	<!-- angular account controller -->
+	<script type="text/javascript" src="app/components/account/account.js"></script>
+	<!-- angular account messages controller -->
+	<script type="text/javascript" src="app/components/account/account-messages/account-messages.js"></script>
+	<!-- angular account update controller -->
+	<script type="text/javascript" src="app/components/account/account-properties/account-properties.js"></script>
+	<!-- angular account update controller -->
+	<script type="text/javascript" src="app/components/account/account-update/account-update.js"></script>
+	<!-- angular account update confirmation controller -->
+	<script type="text/javascript" src="app/components/account/account-update-confirmation/account-update-confirmation.js"></script>
+	<!-- angular account update image controller -->
+	<script type="text/javascript" src="app/components/account/account-update-image/account-update-image.js"></script>
+	<!-- angular account update password controller -->
+	<script type="text/javascript" src="app/components/account/account-update-password/account-update-password.js"></script>
+	
+	<!-- angular forgot password controller -->
+	<script type="text/javascript" src="app/components/forgot-password/forgot-password.js"></script>
+	<!-- angular forgot password controller -->
+	<script type="text/javascript" src="app/components/landing/landing.js"></script>
+	<!-- angular properties controller -->
+	<script type="text/javascript" src="app/components/properties/properties.js"></script>
+	<!-- angular property controller -->
+	<script type="text/javascript" src="app/components/property/property.js"></script>
+	<!-- angular property create controller -->
+	<script type="text/javascript" src="app/components/property-create/property-create.js"></script>
+	<!-- angular property update controller -->
+	<script type="text/javascript" src="app/components/property-update/property-update.js"></script>
+	<!-- angular reset password controller -->
+	<script type="text/javascript" src="app/components/reset-password/reset-password.js"></script>
+	<!-- angular signup controller -->
+	<script type="text/javascript" src="app/components/signup/signup.js"></script>
+	<!-- angular users controller -->
+	<script type="text/javascript" src="app/components/users/users.js"></script>
+	<!-- angular header controller -->
+	<script type="text/javascript" src="app/components/header/header.js"></script>
+	
+</body>
+</html>

@@ -1,0 +1,174 @@
+<div class="container-fluid">
+
+	<div class="row">
+		
+		<div class="col-xs-12 col-md-7 col-md-offset-1">
+			
+			<div class="panel panel-default">
+				
+				<div class="panel-heading">
+
+					<div style="display: -webkit-box; display: -webkit-flex; display: -moz-flex; display: flex; ;align-items: center;">
+						<h3>{{ property.name }}</h3>
+						
+						<h3 style="margin: 0; margin-left: auto;">$ {{ property.price }} <span ng-if="property.lease">/ month</span></h3>
+					</div>
+
+
+					<p>{{ property.address.street }} {{ property.address.buildingName }} {{ property.address.unitNumber }} {{ property.address.zipcode }}</p>
+
+				</div>
+				
+				<div class="panel-body">
+			
+					<a href="images/{{property.images[0].filename || 'u4644.png'}}" data-lightbox="image">
+
+					<img ng-src="images/{{property.images[0].filename || 'u4644.png'}}">
+
+					</a>
+
+					<div class="row" style="padding: 10px;">
+
+						<div class="col-xs-12">
+
+							<slick class="slick-slider-listings" ng-if="property.images.length > 1" infinite=true slides-to-show="3" slides-to-scroll="1">
+							
+								<div class="slick-content" ng-repeat="image in property.images">
+
+									<a href="images/{{image.filename}}" data-lightbox="image">
+
+										<img ng-src="images/{{image.filename}}">	
+
+									</a>
+								
+								</div>
+
+							</slick>
+
+						</div>
+
+					</div>
+			
+				</div>
+
+				<div class="row" style="padding: 0 10px;">
+
+					<div class="col-xs-12 col-md-6">
+
+						<ul class="list-group ">
+
+							<li class="list-group-item">Description: {{ property.description }}</li>
+
+							<li class="list-group-item">Price: $ {{ property.price }} <span ng-if="property.lease">/ month</span></li>
+						
+							<li class="list-group-item">Price/ sqft: {{ property.price }}</li>
+						
+							<li class="list-group-item">Tenure: {{ property.tenure | date: "MM-dd-yyyy" }}</li>
+						
+						</ul>
+					</div>
+					
+					<div class="col-xs-12 col-md-6">
+
+						<ul class="list-group ">
+
+							<li class="list-group-item">Area sqft: {{ property.area }}</li>
+					
+							<li class="list-group-item">Condition: {{ property.condition }}</li>
+
+							<li class="list-group-item">Date: {{ property.dateAvailable | date: "MM-dd-yyyy" }}</li>
+						
+						</ul>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="panel panel-default">
+				
+				<div class="panel-heading">Property Map</div>
+				
+				<div class="panel-body">
+			
+					<div id="map" style="width: 100%; height: 500px"></div>
+			
+				</div>
+			
+			</div>
+		
+		</div>
+
+		<div class="col-xs-12 col-md-3">
+
+			<div class="panel panel-default container-fixed">
+
+				<div class="panel-body">
+
+					<img ng-src="images/{{property.owner.image.filename || 'p1.jpg'}}" class="img-circle image-medium pull-left clearfix" style="margin-right: 10px; margin-bottom: 10px;">
+					
+					<h4 class="truncate">{{ property.owner.firstName }} {{ property.owner.lastName }}</h4>
+
+					<p>CEA: {{ property.owner.ceaNumber }}</p>
+					
+					<p><i class="fa fa-phone fa-fw"></i>{{ property.owner.contactNumber[0] }} {{ property.owner.contactNumber[1] }}</p>
+
+					
+
+					<form ng-submit="createChat()" novalidate>
+
+						<div class="form-group">
+							
+							<input type="text" class="form-control" id="name" placeholder="Name" ng-model="chat.inquirer.firstName" ng-disabled="property.owner._id == account._id">
+						
+						</div>
+
+						<div class="form-group">
+
+							<input type="number" class="form-control" placeholder="Contact Number" ng-model="chat.inquirer.contactNumber[0]" ng-minlength="9" ng-maxlength="9" ng-disabled="property.owner._id == account._id">
+						
+						</div>
+						
+						<div class="form-group">
+							
+							<input type="email" class="form-control" id="email" placeholder="Email" ng-model="chat.inquirer.email" ng-disabled="property.owner._id == account._id">
+						
+						</div>
+
+						<div class="form-group">
+							
+							<textarea class="form-control" rows="3" placeholder="Message here" ng-model="chat.message.string" ng-disabled="property.owner._id == account._id"></textarea>
+
+						</div>
+						
+						<div class="checkbox">
+					
+							<label>
+							
+								<input type="checkbox" ng-disabled="property.owner._id == account._id"> Please keep me posted on new launches, property digest and new offers!
+							
+							</label>
+							
+						</div>
+					
+						<button type="submit" class="btn btn-primary" id="createSubmit" data-loading-text="Sending..." ng-disabled="property.owner._id == account._id">Submit</button>
+			
+					</form>
+										
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
+
+<script type="text/javascript">
+	
+	$(document).ready(function () {
+		
+		
+	})
+
+</script>

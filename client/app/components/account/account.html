@@ -1,0 +1,203 @@
+<div class="container-fluid" ng-init="init()">
+	
+	<div class="row">
+
+		<div class="col-xs-12 col-sm-2 hidden-xs">
+			
+			<div class="panel panel-default">
+
+				<img ng-src="images/{{account.image.filename || 'p1.jpg'}}" ui-sref="account.update-image">
+
+				<ul class="list-group">
+
+					<a ui-sref="account" class="list-group-item">My Account</a>
+				
+					<a ui-sref="account.properties" class="list-group-item" ng-if="!admin">My Listings</a>
+				
+					<a ui-sref="account.messages" class="list-group-item" ng-if="!admin">My Messages</a>
+				
+				</ul>
+			
+			</div>
+			
+		</div>
+
+		<div class="col-xs-12 col-sm-10" ui-view>
+
+			<div class="panel panel-default visible-xs">
+				
+				<img ng-src="images/{{account.image.filename || 'p1.jpg'}}" ui-sref="account.update-image">
+
+			</div>
+
+			<div class="panel panel-default">
+			
+				<div class="panel-heading">My account</div>
+
+				<ul class="list-group">
+				
+					<li class="list-group-item">
+
+						<div class="row">
+
+							<div class="col-xs-10">
+								
+								Email Address: {{ account.email }}
+
+							</div>
+
+							<div class="col-xs-2">
+								
+								<span class="pull-right"><button class="btn btn-primary small" ui-sref="account.update">Change</button></span>
+
+							</div>
+
+						</div>
+
+					</li>
+				
+					<!-- <li class="list-group-item">
+
+						<div class="row">
+
+							<div class="col-xs-10">
+								
+								Login Password: **************
+
+							</div>
+
+							<div class="col-xs-2">
+								
+								<span class="pull-right"><button class="btn btn-primary small" ui-sref="account.update-password">Change</button></span>
+
+							</div>
+
+						</div>
+
+					</li>
+				 -->
+					<li class="list-group-item">
+
+						<div class="row">
+
+							<div class="col-xs-10">
+								
+								Contact Number: {{ account.contactNumber[0] }} / {{ account.contactNumber[1] }}
+
+							</div>
+
+						</div>
+
+					</li>
+
+					<!-- <li class="list-group-item">
+
+						<div class="row">
+
+							<div class="col-xs-10">
+								
+								Change profile picture
+
+							</div>
+
+							<div class="col-xs-2">
+								
+								<span class="pull-right"><button class="btn btn-primary small" ui-sref="account.update-image">Change</button></span>
+
+							</div>
+
+						</div>
+
+					</li> -->
+				
+				</ul>
+
+				<div class="panel-heading">Company Information</div>
+
+				<ul class="list-group">
+
+					<li class="list-group-item">
+
+						<div class="row">
+
+							<div class="col-xs-10">
+								
+								Company Information: {{ account.company.name }} {{ account.company.unitNumber }} {{ account.company.zipcode }}
+
+							</div>
+
+						</div>
+
+					</li>
+
+					<li class="list-group-item">
+
+						<div class="row">
+
+							<div class="col-xs-10">
+								
+								License Number: {{ account.licenseNumber }}
+
+							</div>
+
+						</div>
+
+					</li>
+				
+					<li class="list-group-item">
+
+						<div class="row">
+
+							<div class="col-xs-10">
+								
+								CEA number: {{ account.ceaNumber }}
+
+							</div>
+
+						</div>
+
+					</li>
+
+					<li class="list-group-item">
+
+						<div class="row">
+
+							<div class="col-xs-10">
+								
+								Newsletter Subscription: {{ account.newsSubscription }}
+
+							</div>
+
+						</div>
+
+					</li>
+
+					<li class="list-group-item">
+
+						<div class="row">
+
+							<div class="col-xs-10">
+								
+								My Current Products / Billing Info
+
+							</div>
+
+							<div class="col-xs-2">
+								
+								<span class="pull-right"><button class="btn btn-primary small" style="width: 64px">View</button></span>
+
+							</div>
+
+						</div>
+
+					</li>
+				
+				</ul>
+
+			</div>
+		
+		</div>
+
+	</div>
+
+</div>

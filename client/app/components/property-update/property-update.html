@@ -1,0 +1,712 @@
+<div class="container-fluid">
+	
+	<div class="row">
+
+		<div class="col-xs-12 col-sm-2 hidden-xs">
+			
+			<div class="panel panel-default" style="position: fixed; width: 200px;">
+
+				<ul class="list-group" id="property-list">
+
+					<a href="" target="#type" class="list-group-item">Property Type</a>
+				
+					<a href="" target="#details" class="list-group-item">Property Details</a>
+				
+					<a href="" target="#address" class="list-group-item">Property Address</a>
+
+					<a href="" target="#photos" class="list-group-item">Property Photos</a>
+
+					<a href="" target="#agreement" class="list-group-item">Listing Agreement</a>
+
+				<!-- 	<a ng-href="/#!/property-create#type" class="list-group-item">Property Type</a>
+				
+					<a ng-href="/#!/property-create#details" class="list-group-item">Property Details</a>
+				
+					<a ng-href="/#!/property-create#address" class="list-group-item">Property Address</a>
+
+					<a ng-href="/#!/property-create#photos" class="list-group-item">Property Photos</a>
+
+					<a ng-href="/#!/property-create#agreement" class="list-group-item">Listing Agreement</a> -->
+				
+				</ul>
+			
+			</div>
+
+		</div>
+		
+		<div class="col-xs-12 col-sm-10">
+
+			<form name="updateForm" ng-submit="update()" novalidate>
+
+				<div class="panel panel-default" id="type">
+
+					<div class="panel-heading">Property Type</div>
+
+					<div class="panel-body">
+						
+						<ul class="nav nav-tabs" role="tablist">
+							
+							<li role="presentation" class="active"><a href="#propertyTypeOffice" role="tab" data-toggle="tab">Office</a></li>
+							
+							<li role="presentation"><a href="#propertyTypeRetail" role="tab" data-toggle="tab">Retail</a></li>
+							
+							<li role="presentation"><a href="#propertyTypeIndustrial" role="tab" data-toggle="tab">Industrial</a></li>
+						
+						</ul>
+
+						 <div class="tab-content">
+
+							
+							<div role="tabpanel" class="tab-pane active" id="propertyTypeOffice">
+
+								<div class="form-group" ng-repeat="office in propertyType.offices">
+
+									<div class="checkbox">
+										
+										<label>
+										
+											<input type="checkbox" checklist-model="property.types" checklist-value="office.name"> {{office.name}}
+										
+										</label>
+									
+									</div>
+
+								</div>
+
+							</div>
+							
+							<div role="tabpanel" class="tab-pane" id="propertyTypeRetail">
+
+								<div class="form-group" ng-repeat="retail in propertyType.retails">
+
+									<div class="checkbox">
+										
+										<label>
+										
+											<input type="checkbox" checklist-model="property.types" checklist-value="retail.name"> {{retail.name}}
+										
+										</label>
+									
+									</div>
+
+								</div>
+
+							</div>
+							
+							<div role="tabpanel" class="tab-pane" id="propertyTypeIndustrial">
+
+								<div class="form-group" ng-repeat="industrial in propertyType.industrials">
+									
+									<div class="checkbox">
+										
+										<label>
+										
+											<input type="checkbox" checklist-model="property.types" checklist-value="industrial.name"> {{industrial.name}}
+										
+										</label>
+									
+									</div>
+								
+								</div>
+
+							</div>
+						
+						</div>
+
+					</div>
+					
+					<div class="panel-heading">Property Use Classes</div>
+
+					<div class="panel-body">
+
+						 <div class="tab-content">
+
+						 	<div class="row">
+							
+								<div class="col-xs-12 col-md-4">
+
+									<div class="form-group" ng-repeat="useClass in propertyUseClasses | limitTo: 6:0">
+									
+										<div class="checkbox">
+											
+											<label>
+
+												<input type="checkbox" checklist-model="property.useClasses" checklist-value="useClass.name"> {{ useClass.name }}
+
+											</label>
+										
+										</div>
+
+									</div>
+
+								</div>
+								
+								<div class="col-xs-12 col-md-4">
+
+									<div class="form-group" ng-repeat="useClass in propertyUseClasses | limitTo: 6:6">
+									
+										<div class="checkbox">
+											
+											<label>
+
+												<input type="checkbox" checklist-model="property.useClasses" checklist-value="useClass.name"> {{ useClass.name }}
+
+											</label>
+										
+										</div>
+
+									</div>
+
+								</div>
+								
+								<div class="col-xs-12 col-md-4">
+
+									<div class="form-group" ng-repeat="useClass in propertyUseClasses | limitTo: 6:12">
+										
+										<div class="checkbox">
+											
+											<label>
+
+												<input type="checkbox" checklist-model="property.useClasses" checklist-value="useClass.name"> {{ useClass.name }}
+
+											</label>
+										
+										</div>
+
+									</div>
+
+								</div>
+							
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="panel-heading">Unique Features</div>
+
+					<div class="panel-body">
+						
+						<ul class="nav nav-tabs" role="tablist">
+							
+							<li role="presentation" class="active"><a href="#propertyUniqueFeatureOffice" role="tab" data-toggle="tab">Office</a></li>
+							
+							<li role="presentation"><a href="#propertyUniqueFeatureRetail" role="tab" data-toggle="tab">Retail</a></li>
+							
+							<li role="presentation"><a href="#propertyUniqueFeatureIndustrial" role="tab" data-toggle="tab">Industrial</a></li>
+						
+						</ul>
+
+						 <div class="tab-content">
+							
+							<div role="tabpanel" class="tab-pane active" id="propertyUniqueFeatureOffice">
+
+								<div class="form-group" ng-repeat="office in propertyType.offices">
+									
+									<div class="checkbox">
+										
+										<label>
+										
+											<input type="checkbox" checklist-model="property.uniqueFeatures" checklist-value="office.name"> {{office.name}}
+										
+										</label>
+									
+									</div>
+
+								</div>
+
+							</div>
+							
+							<div role="tabpanel" class="tab-pane" id="propertyUniqueFeatureRetail">
+
+								<div class="form-group" ng-repeat="retail in propertyType.retails">
+									
+									<div class="checkbox">
+										
+										<label>
+										
+											<input type="checkbox" checklist-model="property.uniqueFeatures" checklist-value="retail.name"> {{retail.name}}
+										
+										</label>
+									
+									</div>
+
+								</div>
+
+							</div>
+							
+							<div role="tabpanel" class="tab-pane" id="propertyUniqueFeatureIndustrial">
+
+								<div class="form-group" ng-repeat="industrial in propertyType.industrials">
+									
+									<div class="checkbox">
+										
+										<label>
+										
+											<input type="checkbox" checklist-model="property.uniqueFeatures" checklist-value="industrial.name"> {{industrial.name}}
+										
+										</label>
+									
+									</div>
+
+								</div>
+
+							</div>
+						
+						</div>
+
+					</div>
+
+				</div>
+
+				<div class="panel panel-default" id="details">
+					
+					<div class="panel-heading">Property Details</div>
+
+					<div class="panel-body">
+
+						<!-- <div class="form-group">
+					
+							<div class="checkbox" style="display: inline-block; padding-right: 20px;">
+									
+								<label>
+								
+									<input type="checkbox" ng-model="property.sale"> This property is for sale
+								
+								</label>
+
+							</div>
+
+						</div>
+
+						<div class="form-group">
+
+							<div class="checkbox" style="display: inline-block; padding-right: 20px;">
+									
+								<label>
+								
+									<input type="checkbox" ng-model="property.lease"> This property is for lease
+								
+								</label>
+
+							</div>
+
+						</div> -->
+
+						<!-- <div class="form-group">
+
+							<label>Category: {{ property.category }}</label>
+								
+							<select class="form-control selectpicker" title="Category" ng-model="property.category" ng-change="propertyLeaseToggle()" required>
+								
+								<option>For sale</option>
+								
+								<option>For lease</option>
+								
+							</select>
+
+						</div> -->
+
+
+						<div class="form-group btn-group">
+						
+							<label class="btn btn-default btn-shrink">
+							
+								<input type="radio" ng-model="property.category" ng-change="propertyLeaseToggle()" autocomplete="off" value="For sale" style="display: none;" required> For Sale
+							
+							</label>
+							
+							<label class="btn btn-default btn-shrink">
+						
+								<input type="radio" ng-model="property.category" ng-change="propertyLeaseToggle()" autocomplete="off" value="For lease" style="display: none;" required> For Lease
+						
+							</label>
+
+						</div>
+
+
+						<div class="row">
+
+							<div class="col-xs-12 col-md-4">
+						
+								<div class="form-group">
+
+									<label>Property Name</label>
+										
+									<input type="text" class="form-control" ng-model="property.name" ng-pattern="/^[a-zA-Z0-9\s]*$/" ng-pattern-err-type="format" required>
+
+								</div>
+
+							</div>
+
+							<div class="col-xs-12 col-md-4">
+
+								<div class="form-group">
+
+									<div class="input-group">
+
+										<label>Sale Price</label>
+
+										<span class="input-group-addon">$</span>
+											
+										<input type="number" class="form-control" ng-model="property.price" required>
+
+										<span class="input-group-addon" ng-if="property.lease">/ month</span>
+										
+									</div>
+
+								</div>
+
+							</div>
+
+							<div class="col-xs-12 col-md-4">
+
+								<div class="form-group">
+
+									<label>Date available</label>
+										
+									<input type="date" class="form-control" ng-model="property.dateAvailable" required>
+
+								</div>
+
+							</div>
+
+							<div class="col-xs-12 col-md-4">
+
+								<div class="form-group">
+
+									<label>Condition: {{ property.condition }}</label>
+										
+									<select class="form-control selectpicker" title="Condition" ng-model="property.condition" required>
+										
+										<option>Fully Furnished</option>
+										
+										<option>Partially Furnished</option>
+										
+										<option>Unfurnished</option>
+										
+										<option>Flexible</option>
+										
+									</select>
+
+								</div>
+
+							</div>
+
+							<div class="col-xs-12 col-md-4">
+
+								<div class="form-group">
+
+									<div class="input-group">
+
+										<label>Area</label>
+											
+										<input type="number" class="form-control" ng-model="property.area" required>
+
+										<span class="input-group-addon">sqft</span>
+									
+									</div>
+
+								</div>
+
+							</div>
+
+							<div class="col-xs-12 col-md-4">
+
+								<div class="form-group">
+
+									<label>Tenure</label>
+										
+									<input type="date" class="form-control" ng-model="property.tenure" required>
+
+								</div>
+
+							</div>
+
+							<div class="col-xs-12 col-md-4" ng-if="property.lease">
+
+								<div class="form-group">
+
+									<label>Lease term</label>
+										
+									<input type="date" class="form-control" ng-model="property.leaseTerm" required>
+
+								</div>
+
+							</div>
+
+							<div class="col-xs-12">
+
+								<div class="form-group">
+							
+									<label>Description:</label>
+									
+									<textarea class="form-control" rows="5" ng-model="property.description" required></textarea>
+								</div>
+
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+
+				<div class="panel panel-default" id="address">
+					
+					<div class="panel-heading">Property Address</div>
+
+					<div class="panel-body">
+						
+						<div class="row">
+
+							<div class="col-xs-12 col-md-6">
+
+								<p><b>Please click on the map to select the street name and plot the exact location of the property.</b></p>
+							
+								<div id="map" style="width: 100%; height: 360px"></div>
+
+							</div>
+							
+							<div class="col-xs-12 col-md-6">
+								
+								<div class="form-group">
+
+									<label>Street name</label>
+										
+									<input type="text" class="form-control" ng-model="property.address.street" ng-pattern="/^[a-zA-Z0-9.,_-\s]+$/" ng-pattern-err-type="format" required>
+
+								</div>
+
+								<div class="form-group">
+
+									<label>Apartment / Building name</label>
+										
+									<input type="text" class="form-control" ng-model="property.address.buildingName" ng-pattern="/^[a-zA-Z0-9\s]*$/" ng-pattern-err-type="format" required>
+
+								</div>
+
+								<div class="form-group">
+
+									<label>Unit number</label>
+										
+									<input type="text" class="form-control" ng-model="property.address.unitNumber" ng-pattern="/^[a-zA-Z0-9-\s]*$/" ng-pattern-err-type="format" required>
+
+								</div>
+
+								<div class="form-group">
+
+									<label>Zip code</label>
+										
+									<input type="number" class="form-control" ng-model="property.address.zipcode" ng-minlength="6" ng-maxlength="6" required>
+
+								</div>
+
+								<div class="form-group">
+
+									<label>District: {{ property.address.district }}</label>
+										
+									<select class="form-control selectpicker" title="District" ng-model="property.address.district" required>
+										
+										<option>District 01 - Marina Areas (Raffles Place, Cecil, Marina, People's Park)</option>
+										
+										<option>District 02 - CBD (Anson, Tanjong Pagar)</option>
+										
+										<option>District 03 - Central South (Alexandra Road, Tiong Bahru, Queenstown)</option>
+										
+										<option>District 04 - Keppel (Keppel, Mount Faber, Harbourfront, Telok Blangah)</option>
+
+										<option>District 05 - South West (Buona Vista, Dover, Clementi New Town, Pasir Panjang, West Coast)</option>
+
+										<option>District 06 - City Hall (City Hall, High Street, North Bridge Road)</option>
+
+										<option>District 07 - Beach Road (Middle Road, Golden Mile, Bencoolen Road, Bugis, Rochor)</option>
+
+										<option>District 08 - Little India (Farrer Park, Serangoon Road)</option>
+
+										<option>District 09 - Orchard (Cairnhill, Killiney, Leonie Hill Orchard, Oxley)</option>
+
+										<option>District 10 - Tanglin (Balmoral, Bukit Timah, Grange Road, Holland, Orchard Boulevard, River Valley, Tanglin Road)</option>
+
+										<option>District 11 - Newton (Watten Estate, Novena, Thomson Bukit Timah, Dunearn Road Newton)</option>
+
+										<option>District 12 - Toa Payoh (Balestier, Moulmein, Novena, Toa Payoh)</option>
+
+										<option>District 13 - Central East (Potong Pasir, Macpherson, Braddell)</option>
+
+										<option>District 14 - Eunos (Geylang, Kembangan, Paya Lebar)</option>
+
+										<option>District 15 - East Coast (Katong Marine Parade, Siglap, Joo Chiat, Tanjong Rhu)</option>
+
+										<option>District 16 - Upper East Coast (Bayshore, Bedok, Chai Chee)</option>
+
+										<option>District 17 - Far East (Changi, Loyang, Pasir Ris)</option>
+
+										<option>District 18 - Tampines (Pasir Ris, Simei, Tampines)</option>
+
+										<option>District 19 - North East (Serangoon Garder, Hougang, Punggol, Sengkang)</option>
+
+										<option>District 20 - Ang Mo Kio (Bishan, Braddell Road, Thomson)</option>
+										
+									</select>
+
+								</div>
+
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+
+				<div class="panel panel-default" id="photos">
+			
+					<div class="panel-heading">Property Photos</div>
+
+					<div class="panel-body">
+
+			            <div class="form-group">
+
+							<div class="row">
+
+					            <div class="form-group col-xs-12 col-md-4">
+
+									<img src="images/drag_and_drop.jpg"  ngf-drop="uploadFiles($files)" class="drop-box" ngf-drag-over-class="'dragover'" ng-model="property.images" ngf-multiple="true" ngf-pattern="'image/*'">
+
+					            	<label class="btn btn-default btn-file btn-primary" style="width: 100%">
+									    Browse <input type="file" hidden name="file" id="file" ng-model="property.images" ngf-select ngf-multiple="true" ng-pattern-err-type="format" ngf-pattern="'image/*'" ngf-max-size="25MB" required>
+									</label>
+								
+								</div>
+
+								<div class="col-xs-12 col-md-8" ng-if="!property.images">
+									
+									<p>Images Preview:</p> 
+
+									<div style="display: inline-block; width: 150px; padding: 5px">
+
+										<img ng-src="images/u4644.png">
+
+									</div>
+
+									<div style="display: inline-block; width: 150px; padding: 5px">
+
+										<img ng-src="images/u4644.png">
+
+									</div>
+
+									<div style="display: inline-block; width: 150px; padding: 5px">
+
+										<img ng-src="images/u4644.png">
+
+									</div> 	
+
+									<div style="display: inline-block; width: 150px; padding: 5px">
+
+										<img ng-src="images/u4644.png">
+
+									</div> 	
+
+									<div style="display: inline-block; width: 150px; padding: 5px">
+
+										<img ng-src="images/u4644.png">
+
+									</div> 	
+
+									<div style="display: inline-block; width: 150px; padding: 5px">
+
+										<img ng-src="images/u4644.png">
+
+									</div> 
+
+									<div style="display: inline-block; width: 150px; padding: 5px">
+
+										<img ng-src="images/u4644.png">
+
+									</div> 
+
+									<div style="display: inline-block; width: 150px; padding: 5px">
+
+										<img ng-src="images/u4644.png">
+
+									</div> 
+
+								</div>
+
+								<div class="col-xs-12 col-md-8" ng-if="property.images">
+									
+									<p>Images Preview:</p>
+
+									<div style="display: inline-block; width: 100px; padding: 5px" ng-repeat="image in property.images">
+
+										<img ng-src="images/{{image.filename}}">
+
+										<img ngf-thumbnail="image || '/thumb.jpg'">	
+
+									</div>
+
+								</div>
+
+							</div>
+						
+						</div>
+
+					</div>
+				
+				</div>
+
+		        <div class="form-group" id="agreement">
+		        	
+					<button type="submit" id="updateSubmit" class="btn btn-primary" data-loading-text="Updating...">Update</button>
+
+		        </div>
+
+			</form>
+
+		</div>
+
+	</div>
+
+</div>
+
+<script type="text/javascript">
+	
+	$(document).ready(function () {
+		
+		$('.nav-tabs a').click(function (e) {
+			e.preventDefault()
+			$(this).tab('show')
+		})
+
+		$("#property-list a").click(function() {
+			$('#property-list a').css("background-color", "transparent")
+			$(this).css("background-color", "#f5f5f5");
+		    $('html, body').animate({
+		        scrollTop: $($(this).attr('target')).offset().top - 70
+		    }, 1000);
+		});
+
+		$('.selectpicker').selectpicker();
+
+		function initMap() {
+			
+			var center = {lat:  14.6760413, lng: 121.0437003};
+			
+			var map = new google.maps.Map(document.getElementById('map'), {
+				zoom: 14,
+				center: center
+			});
+			
+			var marker = new google.maps.Marker({
+				position: center,
+				map: map
+			});
+		
+		}
+		
+		initMap();
+
+	})
+
+</script>

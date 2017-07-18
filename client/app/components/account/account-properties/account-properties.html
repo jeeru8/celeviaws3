@@ -1,0 +1,108 @@
+<div class="row">
+
+	<div class="col-xs-12">
+
+		<div class="panel panel-default">
+
+			<div class="panel-heading" style="display: -webkit-box; display: -webkit-flex; display: -moz-flex; display: flex; ;align-items: center;"> 
+			
+				<a ui-sref="account-properties">My listings</a>
+
+				<div style="margin: 0 auto; margin-right: 0;">
+					
+					<button class="btn btn-primary small" ui-sref="property-create">Post listing</button>
+
+					<!-- <button class="btn btn-primary small" style="margin-left: 10px;">Edit listing</button> -->
+
+				</div>
+
+			</div>
+		
+		</div>
+
+		<div class="panel panel-default" ng-repeat="property in properties">
+			
+			<div class="panel-heading" style="display: flex; align-items: center">
+
+			<!-- <div class="checkbox" style="display: inline-block;">
+							
+				<label>
+				
+					<input type="checkbox">{{ property.name }}, {{ property.address.street }} {{ property.address.buildingName }} {{ property.address.unitNumber }} {{ property.address.zipcode }}
+				
+				</label>
+			
+			</div> -->
+
+			<a href="" ui-sref="property ({id: property._id })">
+				
+				{{ property.name }}
+			
+			</a>
+
+			<div class="dropdown" style="margin: 0 auto; margin-right: 0;">
+						
+				<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+				
+					<i class="fa fa-ellipsis-v"></i>
+				
+				</button>
+
+				<ul class="dropdown-menu" style="right: 0; left: auto">
+					
+					<li><a href="" ng-click="delete(property._id)">Delete</a></li>
+
+					<li><a href="" ui-sref="property-update ({id: property._id })">Edit</a></li>
+					
+				</ul>
+
+			</div>
+
+			</div>
+				
+			<div class="panel-body">
+		
+				<div class="col-xs-12 col-md-4">
+					
+					<img ng-src="images/{{property.images[0].filename || 'u4644.png'}}">
+
+				</div>
+
+				<div class="col-xs-12 col-md-5">
+
+					<p>Type: {{ property.types[0] || 'no registered' }}</p>
+
+					<p>Address: {{ property.address.street }} {{ property.address.buildingName }} {{ property.address.unitNumber }} {{ property.address.zipcode }}</p>
+					
+					<p>Description: {{ property.description }}</p>
+
+					<h4 class="pull-left"><i class="fa fa-id-card-o fa-fw fa-lg"></i></h4>
+
+					<h4 class="pull-left"><a href="" ui-sref="property ({id: property._id })"><i class="fa fa-comment fa-lg"></i></a></h4>
+
+					<h4 class="pull-right">${{ property.price }} <span ng-if="property.lease">/ month</span></h4>
+
+				</div>
+
+				<div class="col-xs-12 col-md-3">
+					
+					<!-- <p>Listing Completeness</p>
+
+					<p class="maroon-badge width-60 small">50%</p> -->
+
+					<p>Views This Week</p>
+
+					<p class="maroon-badge width-60 small">{{ property.numberOfViewsPerWeek }}</p>
+
+					<p>Views Since Posted</p>
+
+					<p class="maroon-badge width-60 small">{{ property.numberOfViewsSincePost }}</p>
+				</div>
+		
+			</div>
+		
+		</div>
+
+	</div>
+
+</div>

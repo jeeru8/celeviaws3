@@ -1,0 +1,133 @@
+<div class="row">
+
+	<div class="col-xs-12 col-sm-6">
+		
+		<div class="panel panel-default">
+			
+			<div class="panel-heading">Messages</div>
+
+			<ul class="list-group vertical-scroll">
+
+				<a href="" class="list-group-item" ng-repeat="chat in chats" ng-click="read(chat._id); refreshNotif($index)" >
+					
+					<!-- <img src="images/p1.jpg" class="img-circle image-small"> -->
+					<div>
+						<img ng-src="images/{{chat.receivers[0].image.filename || 'p1.jpg'}}" class="img-circle image-small">
+						
+						<span>{{ chat.receivers[0].firstName }} {{ chat.receivers[0].lastName }} 
+							<span id="Account_UM_ID{{$index}}"   class="badge pull-right maroon-badge" ng-if="chat.unreadmessages!=0" >{{ chat.unreadmessages }} </span>
+						</span>
+
+						
+					</div>
+					<div>
+						<span class="truncate">
+							<!-- {{ chat.messages[chat.messagesLength].user.firstName }} {{ chat.messages[chat.messagesLength].user.lastName }}:  -->{{ chat.messages[chat.messagesLength].string }}
+							<span class="ultra-small pull-right truncate">{{ chat.messages[chat.messagesLength].date | date : "MM/dd/yyyy 'at' h:mm a"}}</span>
+						</span>
+
+						
+					</div>
+				</a>
+
+			</ul>
+		
+		</div>
+
+	</div>
+
+	<div class="col-xs-12 col-sm-6">
+		
+		<div class="panel panel-default">
+			
+			<div class="panel-heading">
+				
+				{{ chat.receivers[0].firstName }} {{ chat.receivers[0].lastName }}
+
+				<span class="ultra-small pull-right"></span>
+
+			</div>
+
+			<div class="panel-body vertical-scroll ">
+				
+				<ul id="mylist" class="list-group chat">
+
+					<li class="list-group-item chat-item chat-item-left" ng-repeat="message in chat.messages | orderBy: 'date'" ng-class="{'chat-item-right': message.sender}">
+
+						<img ng-src="images/{{message.user.image.filename || 'p1.jpg'}}" class="img-circle image-small">
+								
+						
+						<span>{{ message.user.firstName }} {{ message.user.lastName }}</span>
+					
+						<p>
+							{{ message.string }}
+						</p>
+						<p>
+							<span class="ultra-small pull-right" >{{ message.date | date: 'MM/dd/yyyy'}}</span><br>
+							<span class="ultra-small pull-right" >{{ message.date | date : "hh:mm a" }}</span>
+						</p>
+
+					</li>
+
+				</ul>
+
+			</div>
+
+			<div class="panel-footer">
+				
+				<div class="form-group input-group">
+	  			
+	      			<input type="text" id="enter_text" class="form-control" placeholder="Your message here..." ng-model="message.string">
+					
+					<span class="input-group-btn">
+					
+						<button type="button" id="btn_click" class="btn btn-default" ng-click="appendMessage()">Send</button>
+					
+					</span>
+				
+				</div>	
+
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
+
+<script>
+	document.getElementById("enter_text")
+	.addEventListener("keyup", function(event){
+		event.preventDefault();
+
+		if(event.keyCode ==13){
+			document.getElementById("btn_click").click();
+		}
+	});
+</script>
+
+
+<script type="text/javascript">
+	
+
+	//var refreshNotif = function (id){
+		//alert(id);
+		/*var notifUM = document.getElementById('Header_UM_ID').innerHTML;
+		
+
+		if(notifUM != 0){
+			var roomfUM = document.getElementById('Account_UM_ID').innerHTML;
+			var x = notifUM - roomfUM;
+			document.getElementById('Header_UM_ID').innerHTML = x ;
+			document.getElementById('Account_UM_ID').style.display = "none";
+		}
+		
+		var newNotif = document.getElementById('Header_UM_ID').innerHTML;
+			
+		if(newNotif == 0){
+			document.getElementById('Header_UM_ID').style.display = "none";
+		}
+		*/
+	//};
+
+</script>

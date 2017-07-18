@@ -1,0 +1,206 @@
+<section ng-controller="header" ng-init="init()">
+
+<nav class="navbar navbar-default navbar-fixed-top">
+
+	<div class="container-fluid">
+		
+		<div class="navbar-header">
+			
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-collapse" aria-expanded="false">
+
+				<span class="glyphicon glyphicon-menu-hamburger"></span>
+				
+			</button>
+			
+			<a class="navbar-brand" href="#"><img src="images/Logo_Header.png" alt="Logo" style="width: 150px;"></a>
+		
+		</div>
+
+		<div class="collapse navbar-collapse" id="nav-collapse">
+
+			<ul class="nav navbar-nav">
+				
+				<li><a ui-sref="properties ({category: property })" >Search</a></li>
+		
+				<li><a ui-sref="request" ng-if="!admin">Request</a></li>
+
+				<li><a ui-sref="ask" ng-if="!admin" >Ask</a></li>
+
+				<li><a ui-sref="property-create" ng-if="!admin" >Post</a></li>
+
+				<!-- <li><a href="#" ng-if="!admin" ng-click="inprogress()">Post</a></li> -->
+
+				<li><a ui-sref="users" ng-if="admin">Users</a></li>
+
+			</ul>
+
+			<!-- <ul class="nav navbar-nav visible-xs">
+				
+				<li><a ui-sref="landing" data-toggle="collapse" data-target="#nav-collapse">Search</a></li>
+		
+				<li><a ui-sref="request" data-toggle="collapse" data-target="#nav-collapse" ng-if="!admin">Request</a></li>
+
+				<li><a ui-sref="ask" data-toggle="collapse" data-target="#nav-collapse" ng-if="!admin">Ask</a></li>
+
+				<li><a ui-sref="property-create" data-toggle="collapse" data-target="#nav-collapse" ng-if="!admin">Post</a></li>
+
+				<li><a ui-sref="users" data-toggle="collapse" data-target="#nav-collapse" ng-if="admin">Users</a></li>
+
+			</ul> -->
+			
+			<ul class="nav navbar-nav navbar-right">
+										<!-- Notification -->
+
+				<li ng-if="authentication" >	
+
+					<button class="btn btn-default btn-lg btn-link" style="font-size:20px;">
+					    <a ui-sref="account.messages" ng-if="!admin" data-toggle="collapse" data-target="#nav-collapse" aria-expanded="false" ><span class="glyphicon glyphicon-envelope"></span></a>
+					 </button>
+					 <span id="Header_UM_ID" class="badge maroon-badge" style="background:red;
+						   position:relative;
+						   top: -10px;
+						   left: -35px;" ng-if="account.messageUnread!=0">{{account.messageUnread}}</span>
+				</li>
+
+				
+				<li class="dropdown" ng-if="!authentication">
+					
+					<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+					
+						My Profile <span class="caret"></span>
+
+					</a>
+
+					<ul class="dropdown-menu">
+					
+						<li><a href="" data-toggle="modal" data-target="#login">Log in</a></li>
+					
+						<li><a ui-sref="signup" data-target="#nav-collapse">Sign up</a></li>
+					
+					</ul>
+
+				</li>
+				
+				<li class="dropdown" ng-if="authentication">
+					
+					<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="padding: 5px 10px;">
+
+						<div class="" style="width: 35px; height: 35px; display: inline-block; overflow: hidden; border-radius: 50%;">
+							
+							<img ng-src="images/{{account.image.filename || 'p1.jpg'}}">
+
+						</div>
+
+						<span class="caret" style="margin-top: -20px;"></span>
+
+					</a>
+
+					<ul class="dropdown-menu">
+					
+						<li><a ui-sref="account" data-toggle="collapse" data-target="#nav-collapse" aria-expanded="false">My account</a></li>
+					
+						<li><a ui-sref="account.properties" ng-if="!admin" data-toggle="collapse" data-target="#nav-collapse" aria-expanded="false">My listings</a></li>
+					
+						<li><a ui-sref="account.messages" ng-if="!admin" data-toggle="collapse" data-target="#nav-collapse" aria-expanded="false">My messages </a></li>
+					
+						<li class="divider"></li>
+					
+						<li><a href="#" ng-click="logout()" data-toggle="collapse" data-target="#nav-collapse" aria-expanded="false">Log out</a></li>
+					
+					</ul>
+				
+				</li>
+			
+			</ul>
+
+			
+		
+		</div>
+	
+	</div>
+
+</nav>
+
+<!-- Modal -->
+
+<div class="modal fade" id="login" tabindex="-1" role="dialog">
+  
+	<div class="modal-dialog" role="document">
+
+		<div class="modal-content">
+
+			<div class="modal-header">
+
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+					<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+
+				</button>
+				
+				<h4 class="modal-title">Log in</h4>
+			
+			</div>
+			
+			<div class="modal-body">
+
+				<div style="margin: 0 auto; width: 100%; text-align: center">
+					
+					<img src="images/Logo_Header.png" style="width: 200px; margin-bottom: 15px;">
+
+				</div>
+
+				<form name="authenticateForm" ng-submit="authenticate()" novalidate>
+
+					<div class="form-group">
+
+						<div class="input-group">
+		      				
+			      			<input type="email" class="form-control" placeholder="Email" ng-model="user.email" required>
+
+							<span class="input-group-addon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+
+	    				</div>
+
+	    			</div>	
+
+	    			<div class="form-group">
+
+	    				<div class="input-group">
+	      			
+			      			<input type="password" class="form-control" placeholder="Password" ng-model="user.password" required>
+							
+							<span class="input-group-addon"><i class="fa fa-key" aria-hidden="true"></i></span>
+
+						</div>
+	    			
+	    			</div>
+
+					
+
+					<div class="form-group">
+
+						<button type="submit" class="btn btn-primary" data-toggle="collapse" data-target="#nav-collapse" aria-expanded="false">Login</button>
+
+						<a ui-sref="forgot-password" class="pull-right" data-dismiss="modal">Forgot password?</a>
+
+					</div>
+		
+				</form>
+			
+			</div>
+			
+			<div class="modal-footer">
+
+				<span>Don't have an account?</span>
+				
+				<a ui-sref="signup" class="btn btn-default" data-dismiss="modal">Sign up</a>
+			
+			</div>
+
+		</div>
+	
+	</div>
+
+</div>
+
+</section>
